@@ -3,25 +3,31 @@ from datastructures.ibag import IBag, T
 
 class Bag(IBag[T]):
     def __init__(self, *items: Optional[Iterable[T]]) -> None:
-        raise NotImplementedError("__init__ method not implemented")
+       self.__dict_count = {}
+
 
     def add(self, item: T) -> None:
-        raise NotImplementedError("add method not implemented")
+        if item is None: raise TypeError("Can't be None")
+        if item in self.__dict_count: self.__dict_count[item] += 1
+        else: self.__dict_count[item] = 1
 
     def remove(self, item: T) -> None:
-        raise NotImplementedError("remove method not implemented")
+        if item not in self.__dict_count: raise ValueError("Not in bag")
+        else:
+            if self.__dict_count[item] > 1:
+                self.__dict_count[item] -= 1
+            else:
+                del self.__dict_count[item]
 
     def count(self, item: T) -> int:
-        raise NotImplementedError("count method not implemented")
+        return self.__dict_count.get(item,0)
 
     def __len__(self) -> int:
-        raise NotImplementedError("__len__ method not implemented")
-
+        return sum(self.__dict_count.values())
     def distinct_items(self) -> int:
-        raise NotImplementedError("distinct_items method not implemented")
-
+        return self.__dict_count.keys()
     def __contains__(self, item) -> bool:
-        raise NotImplementedError("__contains__ method not implemented")
+        return item in self.__dict_count
 
     def clear(self) -> None:
-        raise NotImplementedError("clear method not implemented")
+        self.__dict_count.clear()
