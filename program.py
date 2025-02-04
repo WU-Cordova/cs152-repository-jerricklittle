@@ -1,8 +1,14 @@
-
+from datastructures.bag import Bag
 
 def main():
     
-    print("Hello, World!")
+    bag = Bag()
+    bag.add('apple')
+    bag.add('pear')
+
+    item = bag.distinct_items()
+
+    print(f"Distinct items: (items)")
 
 
 
