@@ -3,12 +3,12 @@ from enum import Enum
 
 @dataclass
 class Card:
-    def __init__(self, suit,rank)
+    def __init__(self, suit,rank):
         self.suit = suit
         self.rank = rank
         self.value = self.get_value()
 
-    def get_value(self)
+    def get_value(self):
         if self.rank('J', 'Q', 'K'):
             return 10
         elif self.rank == 'A':
