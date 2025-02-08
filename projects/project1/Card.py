@@ -9,13 +9,13 @@ class Card:
         self.value = self.get_value()
 
     def get_value(self):
-        if self.rank('J', 'Q', 'K'):
+        if self.rank in ['J', 'Q', 'K']:
             return 10
         elif self.rank == 'A':
             return 11
         else:
             return int(self.rank)
     def __str__(self):
-        return f"{self.rank}{self.suit}"
+        return f"{self.rank}:{self.suit}"
 
         
