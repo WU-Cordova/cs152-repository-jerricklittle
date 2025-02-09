@@ -66,7 +66,7 @@ class Game:
     def dealer_turn(self):
         # Method to handle the dealer's turn (drawing until reaching at least 17)
         dealer_sum = self.calculate_hand_value(self.dealer_hand)
-        if self.calculate_hand_value(self.dealer_hand) < 17:
+        while self.calculate_hand_value(self.dealer_hand) < 17:
             self.dealer_hand.append(self.deck.deal_card())
             dealer_sum = self.calculate_hand_value(self.dealer_hand)
             print(f"Dealers hand is: {str(self.dealer_hand[0]), str(self.dealer_hand[1]), str(self.dealer_hand[2])}, total {dealer_sum}")
