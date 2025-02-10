@@ -94,17 +94,13 @@ class Game:
         else:
             print("It's a tie!")
 
-    def play_round(self):
-        # Method to play a single round of the game
-        pass
-
     def play_game(self):
     # Loop to allow multiple rounds
         while True:
             # Reset hands before each round
             self.player_hand = []
             self.dealer_hand = []
-            self.deck = Multideck(self.num_decks)  # Optional: reshuffle the deck
+            self.deck = Multideck(self.num_decks)
             
             self.deal_initial_cards()
             self.show_hands(True)

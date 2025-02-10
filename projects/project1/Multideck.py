@@ -1,5 +1,6 @@
 import random
 from Card import Card
+import copy
 class Multideck:
     def __init__(self, num_decks):
         self.num_decks = num_decks
@@ -11,7 +12,7 @@ class Multideck:
         single_deck = [Card(suit,rank) for suit in suits for rank in ranks]
         all_decks = []
         for i in range(self.num_decks):
-            all_decks.append(single_deck)
+            all_decks.append(copy.deepcopy(single_deck))
         return all_decks
     def shuffle(self):
         for deck in self.multideck:
