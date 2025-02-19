@@ -23,7 +23,7 @@ class Array(IArray[T]):
             raise ValueError("starting_sequence must be a valid sequence type.")
         if not isinstance(data_type, type):
             raise TypeError("data_type must be a valid type.")
-        if data_type != type(starting_sequence[0]):
+        if not isinstance (starting_sequence[0], data_type):
             raise TypeError("Need to pass in same data types")
         self.__elements = np.array(starting_sequence, dtype= data_type)
         self.__logical = len(starting_sequence)
@@ -40,16 +40,15 @@ class Array(IArray[T]):
                 raise TypeError("Needs to be int or slice")
             if isinstance(index, slice):
 
-                start, stop, step = index.start, index.stop, index.step
+                start, stop = index.start, index.stop
                 
-                if start >= self.__logical or stop > self.__physical:
+                if start >= self.__logical or stop > self.__logical:
                     raise IndexError('Not in Bounds')
                 
                 
                 
-                items_to_return = self.__elements[:self.__logical].tolist()[start:stop:step]
-                #eturn (starting_sequence= items_to_return, data_type = self.__data_type)
-                return items_to_return
+                items_to_return = self.__elements[index].tolist()
+                return Array(starting_sequence= items_to_return, data_type = self.__data_type)
                 
             return self.__elements[index]
     
