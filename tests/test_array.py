@@ -4,8 +4,8 @@ from datastructures.array import Array
 
 from tests.car import Car, Color, Make, Model
 
-@suite_weight(1.0)
-@suite_name('Array Test Suite')
+"""@suite_weight(1.0)
+@suite_name('Array Test Suite')"""
 class TestArray:
     car1 = Car('123', Color.RED, Make.TOYOTA, Model.CAMRY)
     car2 = Car('456', Color.BLUE, Make.TOYOTA, Model.CIVIC)
@@ -47,6 +47,7 @@ class TestArray:
     def test_equality_operator_should_return_true_for_valid_instances_containing_the_same_data(self, setup_numerical_array: Array):
         array1 = setup_numerical_array
         array2 = setup_numerical_array
+        print(array1, array2)
 
         assert array1 == array2
 
@@ -119,6 +120,7 @@ class TestArray:
             setup_numerical_array[0] = 'string'
 
     def test_bracket_operator_should_return_a_slice_of_the_array_if_a_slice_is_passed_in(self, setup_numerical_array: Array):
+        print([setup_numerical_array[1:5], Array([1, 2, 3, 4])])
         assert setup_numerical_array[1:5] == Array([1, 2, 3, 4])
 
     def test_constructor_should_raise_a_value_error_if_the_sequence_passed_in_is_not_a_sequence(self):
