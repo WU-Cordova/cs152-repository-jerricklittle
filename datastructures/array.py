@@ -29,7 +29,6 @@ class Array(IArray[T]):
         self.__logical = len(starting_sequence)
         self.__physical = len(self.__elements)
         self.__data_type = data_type if data_type != object else type(starting_sequence[0])
-        print("hi")
 
     #def __getitem__(self, index: slice) -> Sequence[T]:
      #   item = self.__elements[index]
