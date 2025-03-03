@@ -1,8 +1,8 @@
-
+from Grid import Grid
 
 def main():
-    
-    print("Hello, World!")
+    grid = Grid()
+    pass
 
 
 
