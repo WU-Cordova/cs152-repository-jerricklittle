@@ -2,9 +2,9 @@ from __future__ import annotations
 import os
 from typing import Iterator, Sequence
 
-from datastructures.iarray import IArray
-from datastructures.array import Array
-from datastructures.iarray2d import IArray2D, T
+from iarray import IArray
+from array import Array
+from iarray2d import IArray2D, T
 from copy import copy
 
 
