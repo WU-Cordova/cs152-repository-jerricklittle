@@ -38,13 +38,9 @@ class Array2D(IArray2D[T]):
         def __reversed__(self) -> Iterator[T]:
             for column_index in range(self.num_cols -1, -1,-1):
                 yield self[column_index]
-
         def __len__(self) -> int:
             return self.num_cols
         
-        """def __eq__(self, other: object):
-            for i in range(len(starting_sequence)):
-                for j in range(len(starting_sequence[i])):"""
         
         def __str__(self) -> str:
             return f"[{', '.join([str(self[column_index]) for column_index in range(self.num_cols)])}]"
@@ -97,6 +93,12 @@ class Array2D(IArray2D[T]):
     def __reversed__(self):
         for row_index in range(self.__row_len -1, -1,-1):
                 yield self[row_index]
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Array2D) or len(self.__array2d) != len(other.__array2d):
+            return False
+        return self.__array2d == other.__array2d
+
+        
     
     def __len__(self): 
         return self.__row_len
