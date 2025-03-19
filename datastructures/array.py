@@ -40,16 +40,24 @@ class Array(IArray[T]):
             if isinstance(index, slice):
 
                 start, stop = index.start, index.stop
+
+                if start is None:
+                    start = 0
+                if stop is None:
+                    stop = self.__logical - 1
                 
                 if start >= self.__logical or stop > self.__logical:
                     raise IndexError('Not in Bounds')
                 
-                
+                items = []
+                for item in range(len(self.__elements)):
+                    items.append(item if not isinstance(item, np.generic) else item.item())
                 
                 items_to_return = self.__elements[index].tolist()
                 return Array(starting_sequence= items_to_return, data_type = self.__data_type)
                 
-            return self.__elements[index]
+            return self.__elements[index] if not isinstance(self.__elements[index], np.generic) else self.__elements[index].item()
+    
     
     def __setitem__(self, index: int, item: T) -> None:
         if type(item) != self.__data_type:

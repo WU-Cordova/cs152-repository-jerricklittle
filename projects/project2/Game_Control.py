@@ -20,7 +20,7 @@ class Game_Control:
 
         while True or generation < max_iter:
 
-            print(f'In loop: {generation}')
+            print(f'In generation: {generation}')
             generation += 1
             self.grid.display()
             time.sleep(1)
