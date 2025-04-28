@@ -2,12 +2,12 @@ from projects.project3.Menu import Menu
 from projects.project3.Customer_Order import Customer_Order
 # from projects.project
 def main():
-    menu = Menu
-    print(menu)
-    customer_order = Customer_Order
-    more == 'Y'
-    while  more == 'Y':
-        start = input(f'What drink would you like today? {menu}')
+    menu = Menu.return_items()
+    name = input('What is the name for the order?')
+    customer_order = Customer_Order(name)
+    more = 'Y'
+    while  more.upper() == 'Y':
+        start = input(f'What drink would you like today? {print(menu)}')
         if start == 1:
             customer_order.add_drink(menu.get_drink(0))
         elif start == 2:

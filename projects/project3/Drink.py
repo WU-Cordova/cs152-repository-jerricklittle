@@ -7,4 +7,4 @@ class Drink:
     price: float
     size: str
     description: str
-    customization: str
+    customization: str = ''
