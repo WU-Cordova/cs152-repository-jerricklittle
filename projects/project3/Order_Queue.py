@@ -9,6 +9,7 @@ class Order_Queue:
         
     def add_order(self, customer_order: Customer_Order) -> None:  
         self.queue.enqueue(customer_order)
+        
 
     def front_order(self) -> Customer_Order:
         return self.queue.front()
