@@ -1,19 +1,20 @@
 from datastructures.linkedlist import LinkedList
 from projects.project3.Drink import Drink
 from projects.project3.Menu import Menu
-# from projects.project3.Order_Queue import Order_Queue
 import __future__
+
 class Customer_Order:
     def __init__(self, name: str) -> None:
         self._order = LinkedList(data_type= Drink)
         self.name= name
-        self._count = 0
     
     def add_drink(self, drink) -> None:
-        customize = input('Do you want customization? (Y)es or (N)o: ')
+        # print y / n ? for if they want to customize
+        # if y then ask for name of what they want changed
+        customize = input('Do you want to customize your drink? (Y)es or (N)o: ')
         if customize.upper() == 'Y':
-            customize_description = input('Please type customization request: ')
-            drink.customization = customize_description
+            customization_description = input('Please type customization request:  ')
+            drink.customization = customization_description
         self._order.append(drink)
 
     def remove_drink(self, drink) -> None:
@@ -22,25 +23,26 @@ class Customer_Order:
     def restart(self) -> None:
         self._order.clear()
 
-    def repeat_order(self) -> Drink:
+    def repeat_order(self) -> None:
         for order in self._order:
             print(order)
 
-    def total_price(self) -> float:
-        sum = 0
-        for order in self._order:
-            sum += order.price
-        return sum
-    def total_sold(self) -> int:
-        return self._count
+    # def total_price(self) -> float:
+    #     sum = 0
+    #     for order in self._order:
+    #         sum += order.price
+    #     return sum
     
+    # def total_sold(self) -> int:
+    #     return self._count
+
     def take_order(self) -> Drink:
         menu_obj = Menu()
         menu = menu_obj.return_items()
-        print(menu_obj.print_name())
+        menu_obj.print_menu()
         more = 'Y'
         while  more.upper() == 'Y':
-            start = int(input(f'What drink would you like today? (enter number):'))
+            start = int(input('What drink would you like today? (Enter number): '))
             if start == 1:
                 self.add_drink(menu[0])
             elif start == 2:
@@ -51,13 +53,10 @@ class Customer_Order:
                 self.add_drink(menu[3])
             elif start == 5:
                 self.add_drink(menu[4])
-            more = input('Would you like to order another? (Y)es or (N)o?: ')
-        self._count += 1
+            more = input('Would you like to order another? (Y)es or (N)o: ')
+
+        self._count =+ 1
         return self
-    
-    
     def __repr__(self):
         drinks = ", ".join(str(drink) for drink in self._order)
-        return f"Order for {self.name}: [{drinks}] with {len(self._order)} drink(s)."
-        
-        
+        return f"Order for {self.name}: [{drinks}] with {len(self._order)} drink(s)"
